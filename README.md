@@ -1,5 +1,7 @@
 # Ohjelmistotekniikka
 
+<!-- tämä on näkymätön muutos viikon 1 tehtävään 17 liittyen -->
+
 Tämä repositorio sisältää tehtäviä 
 [Ohjelmistotekniikka-kurssille](https://ohjelmistotekniikka-hy.github.io/) Helsingin yliopistossa syksyllä 2022.
 
