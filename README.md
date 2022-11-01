@@ -1,4 +1,4 @@
-# OT-harjoitustyö
+# Ohjelmistotekniikka
 
 Tämä repositorio sisältää tehtäviä 
 [Ohjelmistotekniikka-kurssille](https://ohjelmistotekniikka-hy.github.io/) Helsingin yliopistossa syksyllä 2022.
