@@ -1,6 +1,7 @@
 # TimeKeeper
 
 [![CI](https://github.com/PyryL/ot-harjoitustyo/actions/workflows/main.yml/badge.svg)](https://github.com/PyryL/ot-harjoitustyo/actions/workflows/main.yml)
+[![coverage](https://codecov.io/gh/PyryL/ot-harjoitustyo/branch/main/graph/badge.svg?token=PC8AAR5TL3)](https://codecov.io/gh/PyryL/ot-harjoitustyo)
 
 This repository includes [exercises](laskarit/) and a timekeeping app project for a computer science [course](https://ohjelmistotekniikka-hy.github.io/) in University of Helsinki in autumn 2022.
 
