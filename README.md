@@ -2,6 +2,8 @@
 
 <!-- tämä on näkymätön muutos viikon 1 tehtävään 17 liittyen -->
 
+Tähän kurssiin liittyvä projektityö on toteutettu [erilliseen repositorioon](https://github.com/PyryL/timekeeper).
+
 Tämä repositorio sisältää tehtäviä 
 [Ohjelmistotekniikka-kurssille](https://ohjelmistotekniikka-hy.github.io/) Helsingin yliopistossa syksyllä 2022.
 
