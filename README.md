@@ -1,14 +1,11 @@
-# Ohjelmistotekniikka
+# TimeKeeper
 
-<!-- tämä on näkymätön muutos viikon 1 tehtävään 17 liittyen -->
+This repository includes [exercises](laskarit/) and a timekeeping app project for a computer science [course](https://ohjelmistotekniikka-hy.github.io/) in University of Helsinki in autumn 2022.
 
-Tähän kurssiin liittyvä projektityö on toteutettu [erilliseen repositorioon](https://github.com/PyryL/timekeeper).
+## Docs
 
-Tämä repositorio sisältää tehtäviä 
-[Ohjelmistotekniikka-kurssille](https://ohjelmistotekniikka-hy.github.io/) Helsingin yliopistossa syksyllä 2022.
+* [Requirement specification](docs/requirements.md)
+* [Records of working hours](docs/working-hours.md)
 
-<!-- allaoleva teksti liittyy viikon 1 tehtävään 14 -->
-Lorem **ipsum** dolor *sit* amet
-
-## Tehtävät
-* **Viikko 1:** [gitlog.txt](laskarit/viikko1/gitlog.txt), [komentorivi.txt](laskarit/viikko1/komentorivi.txt)
+## Exercises
+* **Week 1:** [gitlog.txt](laskarit/viikko1/gitlog.txt), [komentorivi.txt](laskarit/viikko1/komentorivi.txt)
