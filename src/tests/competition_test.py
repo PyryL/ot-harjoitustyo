@@ -5,7 +5,7 @@ from competitor import Competitor
 
 class CompetitionTest(unittest.TestCase):
     def setUp(self):
-        self.john_doe = Competitor("John Doe", 57, "Compile & Run club")
+        self.john_doe = Competitor("John Doe", 57, "Compile & Run club", None)
         self.competition = Competition("Helsinki marathon", [self.john_doe], None)
     
     def test_competition_name(self):
@@ -18,7 +18,7 @@ class CompetitionTest(unittest.TestCase):
         self.assertIsNone(self.competition.start_time)
     
     def test_competitor_adding(self):
-        another_competitor = Competitor("Matti Meikäläinen", 175, "Hello world runners")
+        another_competitor = Competitor("Matti Meikäläinen", 175, "Hello world runners", None)
         self.competition.add_competitor(another_competitor)
         self.assertListEqual(self.competition.competitors, [self.john_doe, another_competitor])
     
@@ -43,7 +43,8 @@ class CompetitionTest(unittest.TestCase):
                 {
                     "name": "John Doe",
                     "bib": 57,
-                    "club": "Compile & Run club"
+                    "club": "Compile & Run club",
+                    "finish": None
                 }
             ]
         }
