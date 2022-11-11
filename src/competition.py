@@ -10,7 +10,8 @@ class Competition:
     @classmethod
     def init_from_dict(cls, obj):
         competitors = [Competitor.init_from_dict(competitor_obj) for competitor_obj in obj["competitors"]]
-        return Competition(obj["name"], competitors, obj["start"])
+        start_time = None if obj["start"] is None else datetime.fromisoformat(obj["start"])
+        return Competition(obj["name"], competitors, start_time)
     
     @property
     def name(self):

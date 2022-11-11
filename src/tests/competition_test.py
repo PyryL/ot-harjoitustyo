@@ -30,15 +30,14 @@ class CompetitionTest(unittest.TestCase):
         self.competition.start_now()
         self.assertAlmostEqual(self.competition.start_time.timestamp(), datetime.now().timestamp(), delta=0.01)
     
-    def test_str_with_running_timer(self):
-        start_time = datetime(2022, 11, 10, 17, 5, 11, 318524)
-        competition = Competition("Helsinki marathon", [self.john_doe], start_time)
-        self.assertEqual(str(competition), "Helsinki marathon, started 2022-11-10 17:05:11, 1 competitors")
+    def test_str(self):
+        competition = Competition("Helsinki marathon", [self.john_doe], None)
+        self.assertEqual(str(competition), "Helsinki marathon, not running, 1 competitors")
     
     def test_initialization_from_dictionary(self):
         competition_dict = {
             "name": "Helsinki marathon",
-            "start": None,
+            "start": "2022-11-10T17:05:11.318524",
             "competitors": [
                 {
                     "name": "John Doe",
@@ -49,7 +48,7 @@ class CompetitionTest(unittest.TestCase):
             ]
         }
         competition = Competition.init_from_dict(competition_dict)
-        self.assertEqual(str(competition), "Helsinki marathon, not running, 1 competitors")
+        self.assertEqual(str(competition), "Helsinki marathon, started 2022-11-10 17:05:11, 1 competitors")
         
     def test_invalid_initialization_from_dictionary(self):
         invalid_competition_dict = {
