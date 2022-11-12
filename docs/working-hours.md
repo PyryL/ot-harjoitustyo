@@ -7,4 +7,5 @@
 | | 2 | Coding `Competitor` and `Competition` classes & tests |
 | 2022-11-11 | 1 | Coding time functionality to `Competitor` and `Competition` & tests |
 | | 0.5 | Coding temporary CLI for development purposes |
-| **Total** | **6** | | 
+| 2022-11-12 | 1 | Small improvements to `Competitor` and CLI. Changelog. |
+| **Total** | **7** | | 
