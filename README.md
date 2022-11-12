@@ -8,6 +8,7 @@ This repository includes [exercises](laskarit/) and a timekeeping app project fo
 ## Docs
 
 * [Requirement specification](docs/requirements.md)
+* [Changelog](docs/changelog.md)
 * [Records of working hours](docs/working-hours.md)
 
 ## Exercises
