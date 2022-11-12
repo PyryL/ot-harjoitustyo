@@ -72,7 +72,7 @@ class CLI:
         bib = int(input(" > "))
         for competitor in self._competiton.competitors:
             if competitor.bib == bib:
-                # TODO: call competitor.finish_now when implemented
+                competitor.finish_now()
                 print(f" Finished competitor: {competitor.name}, {competitor.club}")
                 print()
                 return
