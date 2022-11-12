@@ -28,6 +28,9 @@ class Competitor:
     def finish_time(self):
         return self._finish_time
     
+    def finish_now(self):
+        self._finish_time = datetime.now()
+    
     def __str__(self):
         if self._finish_time is None:
             finish_info = "not finished"

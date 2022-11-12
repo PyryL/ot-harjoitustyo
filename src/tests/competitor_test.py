@@ -15,8 +15,12 @@ class CompetitorTest(unittest.TestCase):
     def test_competitor_club(self):
         self.assertEqual(self.competitor.club, "Compile & Run club")
     
+    def test_competitor_none_finish_time(self):
+        self.assertIsNone(self.competitor.finish_time)
+    
     def test_competitor_finish_time(self):
-        self.assertEqual(self.competitor.finish_time, None)
+        self.competitor.finish_now()
+        self.assertAlmostEqual(self.competitor.finish_time.timestamp(), datetime.now().timestamp(), delta=0.01)
     
     def test_competitor_string(self):
         self.assertEqual(str(self.competitor), "57: John Doe, Compile & Run club, not finished")
