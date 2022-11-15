@@ -7,6 +7,14 @@ TimeKeeper is a desktop application allowing running competition hosts to easily
 
 This is a project for a computer sciense [course](https://ohjelmistotekniikka-hy.github.io/) in University of Helsinki in autumn 2022.
 
+## Command line actions
+
+The following actions are available on the command line:
+
+* Run the program with `poetry run invoke start`
+* Run tests with `poetry run invoke test`
+* Generate test coverage report with `poetry run invoke coverage-report`
+
 ## Docs
 
 * [Requirement specification](docs/requirements.md)
