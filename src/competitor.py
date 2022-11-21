@@ -6,7 +6,7 @@ class Competitor:
         self._bib = bib
         self._club = club
         self._finish_time = finish_time
-    
+
     @classmethod
     def init_from_dict(cls, obj):
         finish_time = None if obj["finish"] is None else datetime.fromisoformat(obj["finish"])
@@ -23,14 +23,14 @@ class Competitor:
     @property
     def club(self):
         return self._club
-    
+
     @property
     def finish_time(self):
         return self._finish_time
-    
+
     def finish_now(self):
         self._finish_time = datetime.now()
-    
+
     def __str__(self):
         if self._finish_time is None:
             finish_info = "not finished"

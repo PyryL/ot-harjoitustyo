@@ -13,7 +13,7 @@ class CLI:
         name = input(" > ")
         print()
         self._competiton = Competition(name, [], None)
-    
+
     def _main_loop(self):
         while True:
             print("MAIN MENU")
@@ -34,7 +34,7 @@ class CLI:
             else:
                 print(" Unknown command, try again.")
                 print()
-    
+
     def _print_commands(self):
         print("COMMAND LIST")
         print(" c Add new competitor")
@@ -44,7 +44,7 @@ class CLI:
         print(" h Print help")
         print(" x Exit application")
         print()
-    
+
     def _add_competitor(self):
         print("ADDING COMPETITOR")
         print(" Name:")
