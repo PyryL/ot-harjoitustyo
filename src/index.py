@@ -1,5 +1,5 @@
-from competition import Competition
-from competitor import Competitor
+from entities.competition import Competition
+from entities.competitor import Competitor
 
 class CLI:
     def __init__(self):

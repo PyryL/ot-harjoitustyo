@@ -1,5 +1,5 @@
 from datetime import datetime
-from competitor import Competitor
+from .competitor import Competitor
 
 class Competition:
     def __init__(self, name, competitors, start_time):
