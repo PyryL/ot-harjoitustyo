@@ -12,6 +12,14 @@ class Competitor:
         finish_time = None if obj["finish"] is None else datetime.fromisoformat(obj["finish"])
         return Competitor(obj["name"], obj["bib"], obj["club"], finish_time)
 
+    def save_into_dict(self):
+        return {
+            "name": self._name,
+            "bib": self._bib,
+            "club": self._club,
+            "finish": None if self._finish_time is None else self._finish_time.isoformat()
+        }
+
     @property
     def name(self):
         return self._name

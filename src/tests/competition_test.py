@@ -67,3 +67,23 @@ class CompetitionTest(unittest.TestCase):
             "start": None
         }
         self.assertRaises(KeyError, lambda : Competition.init_from_dict(invalid_competition_dict))
+
+    def test_saving_to_dictionary(self):
+        # make competition to have one competitor who has finished
+        self.competition.remove_competitor(self.john_doe)
+        finish_time = datetime(2022, 11, 24, 12, 32, 58, 2314)
+        competitor = Competitor("Matti Meikäläinen", 121, "Hello world runners", finish_time)
+        self.competition.add_competitor(competitor)
+
+        obj = self.competition.save_into_dict()
+        correct_obj = {
+            "name": "Helsinki marathon",
+            "start": "2022-11-24T12:05:17.937554",
+            "competitors": [{
+                "name": "Matti Meikäläinen",
+                "bib": 121,
+                "club": "Hello world runners",
+                "finish": "2022-11-24T12:32:58.002314"
+            }]
+        }
+        self.assertDictEqual(obj, correct_obj)

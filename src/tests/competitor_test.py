@@ -47,3 +47,13 @@ class CompetitorTest(unittest.TestCase):
             "bib": 57
         }
         self.assertRaises(KeyError, lambda : Competitor.init_from_dict(invalid_competitor_dict))
+
+    def test_saving_to_dictionary(self):
+        obj = self.competitor.save_into_dict()
+        correct_dict = {
+            "name": "John Doe",
+            "bib": 57,
+            "club": "Compile & Run club",
+            "finish": None
+        }
+        self.assertDictEqual(obj, correct_dict)

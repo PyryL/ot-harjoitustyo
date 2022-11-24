@@ -13,6 +13,13 @@ class Competition:
         start_time = None if obj["start"] is None else datetime.fromisoformat(obj["start"])
         return Competition(obj["name"], competitors, start_time)
 
+    def save_into_dict(self):
+        return {
+            "name": self._name,
+            "start": None if self._start_time is None else self._start_time.isoformat(),
+            "competitors": [competitor.save_into_dict() for competitor in self._competitors]
+        }
+
     @property
     def name(self):
         return self._name
