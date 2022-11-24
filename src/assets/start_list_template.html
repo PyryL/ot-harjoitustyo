@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{competition_name}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      table td {
+        padding: 0px 3px;
+        border: 1px solid black;
+      }
+      table tr td:first-child {
+        /* bib number */
+        text-align: center;
+      }
+      table tr:nth-child(even) {
+        background-color: #e7e7e7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{competition_name}</h1>
+    <table>
+      <thead>
+        <caption>Start list</caption>
+        <tr>
+          <th>Bib</th>
+          <th>Name</th>
+          <th>Club</th>
+        </tr>
+      </thead>
+      <tbody>{competitor_rows}</tbody>
+    </table>
+  </body>
+</html>

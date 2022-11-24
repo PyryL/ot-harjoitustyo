@@ -12,12 +12,12 @@
         padding: 0px 3px;
         border: 1px solid black;
       }
-      table tr td:first-child {
-        /* bib number */
+      table tr td:first-child, table tr td:nth-child(2) {
+        /* rank and bib */
         text-align: center;
       }
-      table tr td:last-child {
-        /* result */
+      table tr td:nth-last-child(2), table tr td:last-child {
+        /* result and difference */
         font-family: monospace;
       }
       table tr:nth-child(even) {
@@ -29,11 +29,14 @@
     <h1>{competition_name}</h1>
     <table>
       <thead>
+        <caption>Results</caption>
         <tr>
+          <th>Rank</th>
           <th>Bib</th>
           <th>Name</th>
           <th>Club</th>
           <th>Result</th>
+          <th>Difference</th>
         </tr>
       </thead>
       <tbody>{competitor_rows}</tbody>
