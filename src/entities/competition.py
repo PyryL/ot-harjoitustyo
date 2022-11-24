@@ -26,7 +26,7 @@ class Competition:
 
     def remove_competitor(self, competitor):
         self._competitors.remove(competitor)
-    
+
     def result_of_competitor(self, competitor):
         if competitor.finish_time is None or self._start_time is None:
             return None
