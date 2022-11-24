@@ -14,12 +14,14 @@ class Exporting:
   def _html_table_rows(self):
     rows = []
     for competitor in self._competition.competitors:
+      result = self._competition.result_of_competitor(competitor)
+      resultFormat = "--:--:--" if result is None else str(result)
       rows.append(f"""
         <tr>
           <td>{competitor.bib}</td>
           <td>{competitor.name}</td>
           <td>{competitor.club}</td>
-          <td>--:--:--</td>
+          <td>{resultFormat}</td>
         </tr>
       """)
     return "\n".join(rows)
