@@ -1,12 +1,13 @@
 import unittest
-from datetime import datetime
-from competition import Competition
-from competitor import Competitor
+from datetime import datetime, timedelta
+from entities.competition import Competition
+from entities.competitor import Competitor
 
 class CompetitionTest(unittest.TestCase):
     def setUp(self):
         self.john_doe = Competitor("John Doe", 57, "Compile & Run club", None)
-        self.competition = Competition("Helsinki marathon", [self.john_doe], None)
+        start_time = datetime(2022, 11, 24, 12, 5, 17, 937554)
+        self.competition = Competition("Helsinki marathon", [self.john_doe], start_time)
     
     def test_competition_name(self):
         self.assertEqual(self.competition.name, "Helsinki marathon")
@@ -15,7 +16,7 @@ class CompetitionTest(unittest.TestCase):
         self.assertListEqual(self.competition.competitors, [self.john_doe])
     
     def test_start_time_after_init(self):
-        self.assertIsNone(self.competition.start_time)
+        self.assertEqual(str(self.competition.start_time), "2022-11-24 12:05:17.937554")
     
     def test_competitor_adding(self):
         another_competitor = Competitor("Matti Meikäläinen", 175, "Hello world runners", None)
@@ -25,6 +26,16 @@ class CompetitionTest(unittest.TestCase):
     def test_competitor_removal(self):
         self.competition.remove_competitor(self.john_doe)
         self.assertListEqual(self.competition.competitors, [])
+    
+    def test_competitor_result(self):
+        finish_time = datetime(2022, 11, 24, 12, 27, 13, 614432)
+        competitor = Competitor("Matti Meikäläinen", 175, "Hello world runners", finish_time)
+        result = self.competition.result_of_competitor(competitor)
+        self.assertEqual(result, timedelta(0, 1315, 676878))
+    
+    def test_competitor_result_with_none(self):
+        result = self.competition.result_of_competitor(self.john_doe)
+        self.assertIsNone(result)
     
     def test_timer_starting(self):
         self.competition.start_now()

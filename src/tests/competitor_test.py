@@ -1,6 +1,6 @@
 import unittest
 from datetime import datetime
-from competitor import Competitor
+from entities.competitor import Competitor
 
 class CompetitorTest(unittest.TestCase):
     def setUp(self):
