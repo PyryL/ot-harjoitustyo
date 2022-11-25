@@ -1,6 +1,4 @@
 import sys
-import random
-from string import ascii_lowercase, digits
 from entities.competition import Competition
 from entities.competitor import Competitor
 from repositories.competition_repository import CompetitionRepository
@@ -31,7 +29,7 @@ class CLI:
     def _create_new_competition(self):
         print(" Give a name for the new competiton:")
         competition_name = input(" > ")
-        self._competition_id = "".join(random.choices(ascii_lowercase+digits, k=8))
+        self._competition_id = self._competition_repository.generate_new_id()
         self._competiton = Competition(competition_name, [], None)
         self._save_changes()
         print(f" The ID of the new competition is {self._competition_id}")
@@ -118,7 +116,7 @@ class CLI:
         print()
 
     def _export_to_html(self):
-        print(" Select [s]tartlist or [r]esults")    # k8q0a6k2
+        print(" Select [s]tartlist or [r]esults")
         export_type = input(" > ")
         if export_type not in ["s", "r"]:
             print(" Invalid selection")

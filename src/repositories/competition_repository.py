@@ -1,11 +1,19 @@
 # import requests
 import json
 import os
+import random
+from string import ascii_lowercase, digits
 from entities.competition import Competition
 
 class CompetitionRepository:
     def __init__(self, base_path = "competitions"):
         self._base_path = base_path
+
+    def generate_new_id(self):
+        while True:
+            competition_id = "".join(random.choices(ascii_lowercase+digits, k=8))
+            if self.get_competition(competition_id) is None:
+                return competition_id
 
     def get_competition(self, competition_id):
         try:
