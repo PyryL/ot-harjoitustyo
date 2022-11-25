@@ -8,4 +8,6 @@
 | 2022-11-11 | 1 | Coding time functionality to `Competitor` and `Competition` & tests |
 | | 0.5 | Coding temporary CLI for development purposes |
 | 2022-11-12 | 1 | Small improvements to `Competitor` and CLI. Changelog. |
-| **Total** | **7** | | 
+| 2022-11-21 | 0.5 | Implemented pylint and fixed style errors |
+| 2022-11-24 | 3 | Coding `Exporting` class & tests, rewriting CLI |
+| **Total** | **10.5** | | 

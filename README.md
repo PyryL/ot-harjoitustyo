@@ -14,6 +14,7 @@ The following actions are available on the command line:
 * Run the program with `poetry run invoke start`
 * Run tests with `poetry run invoke test`
 * Generate test coverage report with `poetry run invoke coverage-report`
+* Run pylint test with `poetry run invoke lint`
 
 ## Docs
 

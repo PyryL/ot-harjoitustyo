@@ -10,3 +10,9 @@
 * `Competition` class responsible for competiton data handling was coded.
 * Unit tests for both `Competitor` and `Competition` classes were coded and checked to pass with 100% branch coverage.
 * A temporary command line interface was coded in order to test coded classes' functionality in real use.
+
+## Week 4
+
+* `Exporting` class that writes competition data into HTML file was done along with its tests
+* `CompetitionRepository` class was coded and set to temporarily read/write data to a local file
+* Changes were made available in the CLI

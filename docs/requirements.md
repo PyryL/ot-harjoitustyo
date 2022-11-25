@@ -31,15 +31,15 @@ Admin users can also create new competitions.
 After selecting a competition, user is able to perform the following actions with it:
 
 * **Manage staff.** Admin users can add and remove users to the competition.
-* **Add a new competitor.** This is done by giving some information about the runner (e.g. bib number, name, club).
-* **Start the timer.** When the competition begins, someone must start the clock.
-* **Add finish time.** For each competitor, the time of crossing the finish line must be determined.
+* **Add a new competitor.** This is done by giving some information about the runner (e.g. bib number, name, club). **DONE**
+* **Start the timer.** When the competition begins, someone must start the clock. **DONE**
+* **Add finish time.** For each competitor, the time of crossing the finish line must be determined. **DONE**
 * **Special actions.** Instead of finish time, competitor can also be marked with *DNS* (did not start), *DNF* (did not finish) or *DQ* (disqualified).
-* **Exporting results.** Results can be exported to an HTML file, that can then be published by the competition organizer. The publication process is out of this project's scope.
+* **Exporting results.** Results can be exported to an HTML file, that can then be published by the competition organizer. The publication process is out of this project's scope. **DONE**
 
 ## Further ideas
 
-* Exporting starting lists.
+* Exporting starting lists. **DONE**
 * Setting competitor's *PB* (personal best) and *SB* (season best) before competition. Add a PB/SB mark to the exported result sheet if the result was better than that.
 * Series based on competitor's age and gender.
 * Possibility for the organizer to save split times.
