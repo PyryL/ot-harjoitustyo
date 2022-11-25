@@ -1,10 +1,11 @@
 # import requests
 import json
+import os
 from entities.competition import Competition
 
 class CompetitionRepository:
-    def __init__(self):
-        self._base_path = "competitions"
+    def __init__(self, base_path = "competitions"):
+        self._base_path = base_path
 
     def get_competition(self, competition_id):
         try:
@@ -16,5 +17,10 @@ class CompetitionRepository:
 
     def set_competition(self, competition_id, new_value):
         obj = new_value.save_into_dict()
+        self._create_directory()
         with open(f"{self._base_path}/{competition_id}.json", "w", encoding="utf-8") as file:
             json.dump(obj, file)
+
+    def _create_directory(self):
+        if not os.path.exists(self._base_path):
+            os.mkdir(self._base_path)
