@@ -9,5 +9,6 @@
 | | 0.5 | Coding temporary CLI for development purposes |
 | 2022-11-12 | 1 | Small improvements to `Competitor` and CLI. Changelog. |
 | 2022-11-21 | 0.5 | Implemented pylint and fixed style errors |
-| 2022-11-24 | 3 | Coding `Exporting` class & tests, rewriting CLI |
-| **Total** | **10.5** | | 
+| 2022-11-24 | 3 | Coding `Exporting` class & tests, `CompetitionRepository`, rewriting CLI |
+| 2022-11-25 | 2 | `CompetitionRepository`'s tests, architecture diagram |
+| **Total** | **12.5** | | 

@@ -19,5 +19,6 @@ The following actions are available on the command line:
 ## Docs
 
 * [Requirement specification](docs/requirements.md)
+* [Architecture](docs/architecture.md)
 * [Changelog](docs/changelog.md)
 * [Records of working hours](docs/working-hours.md)
