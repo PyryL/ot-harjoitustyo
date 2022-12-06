@@ -11,4 +11,6 @@
 | 2022-11-21 | 0.5 | Implemented pylint and fixed style errors |
 | 2022-11-24 | 3 | Coding `Exporting` class & tests, `CompetitionRepository`, rewriting CLI |
 | 2022-11-25 | 2 | `CompetitionRepository`'s tests, architecture diagram |
-| **Total** | **12.5** | | 
+| 2022-12-06 | 2 | Graphical user interface |
+| | 1 | `SpecialResult` enum & tests |
+| **Total** | **15.5** | | 

@@ -16,3 +16,8 @@
 * `Exporting` class that writes competition data into HTML file was done along with its tests
 * `CompetitionRepository` class was coded and set to temporarily read/write data to a local file
 * Changes were made available in the CLI
+
+## Week 5
+
+* Graphical user interface
+* Competitor can be marked with "did not start", "did not finish" or "disqualified" instead of finish time (`SpecialResult` enum) & tests

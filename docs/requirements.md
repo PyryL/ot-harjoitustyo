@@ -34,7 +34,7 @@ After selecting a competition, user is able to perform the following actions wit
 * **Add a new competitor.** This is done by giving some information about the runner (e.g. bib number, name, club). **DONE**
 * **Start the timer.** When the competition begins, someone must start the clock. **DONE**
 * **Add finish time.** For each competitor, the time of crossing the finish line must be determined. **DONE**
-* **Special actions.** Instead of finish time, competitor can also be marked with *DNS* (did not start), *DNF* (did not finish) or *DQ* (disqualified).
+* **Special actions.** Instead of finish time, competitor can also be marked with *DNS* (did not start), *DNF* (did not finish) or *DQ* (disqualified). **DONE**
 * **Exporting results.** Results can be exported to an HTML file, that can then be published by the competition organizer. The publication process is out of this project's scope. **DONE**
 
 ## Further ideas
