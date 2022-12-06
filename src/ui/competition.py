@@ -9,10 +9,12 @@ class CompetitionFrame(Frame):
     def __init__(self, master, back_menu, cnf={}, **kw):
         super().__init__(master=master, cnf={}, **kw)
         self._back_menu = back_menu
+        self._competition_id = None
         self._competition = None
         self.create_view()
 
-    def set_competition(self, competition):
+    def set_competition(self, competition_id, competition):
+        self._competition_id = competition_id
         self._competition = competition
         self.create_view()
 
@@ -20,7 +22,7 @@ class CompetitionFrame(Frame):
         if self._competition is None:
             return
 
-        heading_label = Label(master=self, text=self._competition.name)
+        heading_label = Label(master=self, text=f"{self._competition.name} ({self._competition_id.upper()})")
         menu_button = Button(master=self, text="Menu", command=self._back_menu)
 
         tab_view = Notebook(master=self)

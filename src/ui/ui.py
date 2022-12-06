@@ -5,8 +5,10 @@ from ui.menu import MenuFrame
 from ui.competition import CompetitionFrame
 
 class UI(Tk):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, competition_repository, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
+
+        self._competition_repository = competition_repository
 
         self.geometry("400x200")
         self.resizable(width=False, height=False)
@@ -17,7 +19,7 @@ class UI(Tk):
         self._container.grid_columnconfigure(0, weight=1)
 
         self._pages = {
-            "menu": MenuFrame(self._container, self._open_competition, width=400, height=200),
+            "menu": MenuFrame(self._container, self._competition_repository, self._open_competition, width=400, height=200),
             "competition": CompetitionFrame(self._container, self._open_menu, width=400, height=200)
         }
 
@@ -32,7 +34,10 @@ class UI(Tk):
         self.title("TimeKeeper - Menu")
         self._open_page("menu")
 
-    def _open_competition(self, competition):
+    def _open_competition(self, competition_id):
+        competition = self._competition_repository.get_competition(competition_id)
+        if competition is None:
+            return
         self.title(f"TimeKeeper - {competition.name}")
-        self._pages["competition"].set_competition(competition)
+        self._pages["competition"].set_competition(competition_id, competition)
         self._open_page("competition")

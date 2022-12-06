@@ -137,5 +137,6 @@ class CLI:
 
 if __name__ == "__main__":
     from ui.ui import UI
-    app = UI()
+    repository = CompetitionRepository()
+    app = UI(repository)
     app.mainloop()
