@@ -6,8 +6,9 @@ from ui.timer import TimerFrame
 from ui.exporting import ExportingFrame
 
 class CompetitionFrame(Frame):
-    def __init__(self, master, back_menu, cnf={}, **kw):
+    def __init__(self, master, save_changes, back_menu, cnf={}, **kw):
         super().__init__(master=master, cnf={}, **kw)
+        self._save_changes = save_changes
         self._back_menu = back_menu
         self._competition_id = None
         self._competition = None
@@ -27,7 +28,7 @@ class CompetitionFrame(Frame):
 
         tab_view = Notebook(master=self)
         competitor_form = CompetitorFormFrame(self, self._add_competitor)
-        timer_frame = TimerFrame(self, self._competition)
+        timer_frame = TimerFrame(self, self._competition, self._save_changes_to_competition)
         exporting_frame = ExportingFrame(self, self._competition)
         tab_view.add(competitor_form, text="Competitors")
         tab_view.add(timer_frame, text="Timer")
@@ -37,6 +38,11 @@ class CompetitionFrame(Frame):
         menu_button.grid(row=0, column=1)
         tab_view.grid(row=1, column=0, columnspan=2)
 
+    def _save_changes_to_competition(self):
+        if self._competition is not None:
+            self._save_changes(self._competition)
+
     def _add_competitor(self, competitor):
         if self._competition is not None:
             self._competition.add_competitor(competitor)
+            self._save_changes_to_competition()

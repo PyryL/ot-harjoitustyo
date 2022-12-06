@@ -3,9 +3,10 @@ from tkinter.ttk import Label, Button, Notebook, Entry
 from entities.competitor import SpecialResult
 
 class TimerFrame(Frame):
-    def __init__(self, master, competition, cnf={}, **kw):
+    def __init__(self, master, competition, save_changes, cnf={}, **kw):
         super().__init__(master=master, cnf={}, **kw)
         self._competition = competition
+        self._save_changes = save_changes
         self.create_view()
         self._update_view()
 
@@ -49,6 +50,7 @@ class TimerFrame(Frame):
     def _start_timer(self):
         if self._competition.start_time is None:
             self._competition.start_now()
+            self._save_changes()
             self._update_view()
 
     def _get_competitor_from_bib(self):
@@ -78,6 +80,7 @@ class TimerFrame(Frame):
         if competitor is None:
             return
         competitor.finish_now()
+        self._save_changes()
         messagebox.showinfo("Finished competitor", f"{competitor.name}, {competitor.club}")
 
     def _competitor_dnf(self):
@@ -85,6 +88,7 @@ class TimerFrame(Frame):
         if competitor is None:
             return
         competitor.special_result(SpecialResult.did_not_finish)
+        self._save_changes()
         messagebox.showinfo("Did not finish", f"{competitor.name}, {competitor.club}")
 
     def _competitor_dns(self):
@@ -92,6 +96,7 @@ class TimerFrame(Frame):
         if competitor is None:
             return
         competitor.special_result(SpecialResult.did_not_start)
+        self._save_changes()
         messagebox.showinfo("Did not start", f"{competitor.name}, {competitor.club}")
 
     def _competitor_dq(self):
@@ -99,4 +104,5 @@ class TimerFrame(Frame):
         if competitor is None:
             return
         competitor.special_result(SpecialResult.disqualified)
+        self._save_changes()
         messagebox.showinfo("Disqualified", f"{competitor.name}, {competitor.club}")

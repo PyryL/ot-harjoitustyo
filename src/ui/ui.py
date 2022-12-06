@@ -9,6 +9,7 @@ class UI(Tk):
         Tk.__init__(self, *args, **kwargs)
 
         self._competition_repository = competition_repository
+        self._competition_id = None
 
         self.geometry("400x200")
         self.resizable(width=False, height=False)
@@ -20,7 +21,7 @@ class UI(Tk):
 
         self._pages = {
             "menu": MenuFrame(self._container, self._competition_repository, self._open_competition, width=400, height=200),
-            "competition": CompetitionFrame(self._container, self._open_menu, width=400, height=200)
+            "competition": CompetitionFrame(self._container, self._save_competition_changes, self._open_menu, width=400, height=200)
         }
 
         self._open_menu()
@@ -32,12 +33,18 @@ class UI(Tk):
 
     def _open_menu(self):
         self.title("TimeKeeper - Menu")
+        self._competition_id = None
         self._open_page("menu")
+
+    def _save_competition_changes(self, competition):
+        if self._competition_id is not None:
+            self._competition_repository.set_competition(self._competition_id, competition)
 
     def _open_competition(self, competition_id):
         competition = self._competition_repository.get_competition(competition_id)
         if competition is None:
             return
+        self._competition_id = competition_id
         self.title(f"TimeKeeper - {competition.name}")
         self._pages["competition"].set_competition(competition_id, competition)
         self._open_page("competition")
