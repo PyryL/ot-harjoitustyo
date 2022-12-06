@@ -7,14 +7,24 @@ TimeKeeper is a desktop application allowing running competition hosts to easily
 
 This is a project for a computer sciense [course](https://ohjelmistotekniikka-hy.github.io/) in University of Helsinki in autumn 2022.
 
-## Command line actions
+## Installation
 
-The following actions are available on the command line:
+Make sure that you have Python version 3.8 or higher.
+Also make sure that you have [Poetry](https://python-poetry.org/) installed.
 
-* Run the program with `poetry run invoke start`
-* Run tests with `poetry run invoke test`
-* Generate test coverage report with `poetry run invoke coverage-report`
-* Run pylint test with `poetry run invoke lint`
+You can install TimeKeeper by following these steps:
+
+1. Download the source code from [releases page](https://github.com/PyryL/ot-harjoitustyo/releases/tag/viikko5) and unzip the downloaded archive.
+2. Open Terminal, navigate to the unzipped directory and run `poetry install`.
+3. Start the application by running `poetry run invoke start`.
+
+## Development
+
+Unit tests can be run with `poetry run invoke test`
+
+Style tests can be run with `poetry run invoke lint`
+
+Branch coverage report can be generated with `poetry run invoke coverage-report`
 
 ## Docs
 
