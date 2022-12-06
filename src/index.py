@@ -136,4 +136,6 @@ class CLI:
         print()
 
 if __name__ == "__main__":
-    CLI()
+    from ui.ui import UI
+    app = UI()
+    app.mainloop()
