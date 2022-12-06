@@ -34,9 +34,9 @@ class CompetitionTest(unittest.TestCase):
         self.assertEqual(result, timedelta(0, 1315, 676878))
 
     def test_competitior_special_result(self):
-        competitor = Competitor("Matti Meikäläinen", 175, "Hello world runners", SpecialResult.did_not_start)
+        competitor = Competitor("Matti Meikäläinen", 175, "Hello world runners", SpecialResult.DID_NOT_START)
         result = self.competition.result_of_competitor(competitor)
-        self.assertEqual(result, SpecialResult.did_not_start)
+        self.assertEqual(result, SpecialResult.DID_NOT_START)
     
     def test_competitor_result_with_none(self):
         result = self.competition.result_of_competitor(self.john_doe)

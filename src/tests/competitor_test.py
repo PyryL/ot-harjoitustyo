@@ -23,18 +23,18 @@ class CompetitorTest(unittest.TestCase):
         self.assertAlmostEqual(self.competitor.finish_time.timestamp(), datetime.now().timestamp(), delta=0.01)
 
     def test_competitor_special_result(self):
-        self.competitor.special_result(SpecialResult.did_not_start)
-        self.assertEqual(self.competitor.finish, SpecialResult.did_not_start)
+        self.competitor.special_result(SpecialResult.DID_NOT_START)
+        self.assertEqual(self.competitor.finish, SpecialResult.DID_NOT_START)
 
     def test_competitor_special_result_finish_time_none(self):
-        self.competitor.special_result(SpecialResult.did_not_start)
+        self.competitor.special_result(SpecialResult.DID_NOT_START)
         self.assertIsNone(self.competitor.finish_time)
 
     def test_competitor_string(self):
         self.assertEqual(str(self.competitor), "57: John Doe, Compile & Run club, not finished")
 
     def test_competitor_string_with_special_result(self):
-        self.competitor.special_result(SpecialResult.did_not_start)
+        self.competitor.special_result(SpecialResult.DID_NOT_START)
         self.assertEqual(str(self.competitor), "57: John Doe, Compile & Run club, DNS")
 
     def test_competitor_string_with_finish_time(self):
@@ -60,7 +60,7 @@ class CompetitorTest(unittest.TestCase):
             "finish": "dnf"
         }
         competitor = Competitor.init_from_dict(competitor_dict)
-        self.assertEqual(competitor.finish, SpecialResult.did_not_finish)
+        self.assertEqual(competitor.finish, SpecialResult.DID_NOT_FINISH)
 
     def test_invalid_initialization_from_dictionary(self):
         # make sure that the initialization raises when required dictionary key (club) is missing
@@ -81,7 +81,7 @@ class CompetitorTest(unittest.TestCase):
         self.assertDictEqual(obj, correct_dict)
 
     def test_saving_to_dictionary_with_special_result(self):
-        competitor = Competitor("John Doe", 57, "Compile & Run club", SpecialResult.disqualified)
+        competitor = Competitor("John Doe", 57, "Compile & Run club", SpecialResult.DISQUALIFIED)
         correct_dict = {
             "name": "John Doe",
             "bib": 57,

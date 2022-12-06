@@ -2,9 +2,9 @@ from datetime import datetime
 from enum import Enum
 
 class SpecialResult(Enum):
-    did_not_start = "dns"
-    did_not_finish = "dnf"
-    disqualified = "dq"
+    DID_NOT_START = "dns"
+    DID_NOT_FINISH = "dnf"
+    DISQUALIFIED = "dq"
 
 class Competitor:
     def __init__(self, name, bib, club, finish):

@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 from services.timedelta_format import format_timedelta
 from entities.competitor import SpecialResult
 
@@ -78,10 +78,10 @@ class Exporting:
         result = competitor_result_tuple[1]
         if result is None:
             return timedelta.max - timedelta(seconds=4)
-        elif result == SpecialResult.did_not_finish:
+        if result == SpecialResult.DID_NOT_FINISH:
             return timedelta.max - timedelta(seconds=3)
-        elif result == SpecialResult.did_not_start:
+        if result == SpecialResult.DID_NOT_START:
             return timedelta.max - timedelta(seconds=2)
-        elif result == SpecialResult.disqualified:
+        if result == SpecialResult.DISQUALIFIED:
             return timedelta.max - timedelta(seconds=1)
         return result

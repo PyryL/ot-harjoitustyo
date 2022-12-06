@@ -15,9 +15,9 @@ class ExportTestHelper:
     john = Competitor("John Doe", 57, "Compile & Run club", john_finish_time)
     unelma = Competitor("Unelma Sirpa Leena", 1241, "", unelma_finish_time)
     matti = Competitor("Matti Meikäläinen", 98, "Hello world runners", None)
-    urho = Competitor("Urho Urheilija", 123, "Urheat urheilijat", SpecialResult.did_not_finish)
-    niko = Competitor("Niko Nopea", 74, "Noormarkun nopsa", SpecialResult.disqualified)
-    maija = Competitor("Maija Meikäläinen", 495, "Hello world runners", SpecialResult.did_not_start)
+    urho = Competitor("Urho Urheilija", 123, "Urheat urheilijat", SpecialResult.DID_NOT_FINISH)
+    niko = Competitor("Niko Nopea", 74, "Noormarkun nopsa", SpecialResult.DISQUALIFIED)
+    maija = Competitor("Maija Meikäläinen", 495, "Hello world runners", SpecialResult.DID_NOT_START)
 
     return Competition("Helsinki marathon", [unelma, john, matti, urho, niko, maija], start_time)
 

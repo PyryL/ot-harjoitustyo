@@ -87,7 +87,7 @@ class TimerFrame(Frame):
         competitor = self._get_competitor_from_bib()
         if competitor is None:
             return
-        competitor.special_result(SpecialResult.did_not_finish)
+        competitor.special_result(SpecialResult.DID_NOT_FINISH)
         self._save_changes()
         messagebox.showinfo("Did not finish", f"{competitor.name}, {competitor.club}")
 
@@ -95,7 +95,7 @@ class TimerFrame(Frame):
         competitor = self._get_competitor_from_bib()
         if competitor is None:
             return
-        competitor.special_result(SpecialResult.did_not_start)
+        competitor.special_result(SpecialResult.DID_NOT_START)
         self._save_changes()
         messagebox.showinfo("Did not start", f"{competitor.name}, {competitor.club}")
 
@@ -103,6 +103,6 @@ class TimerFrame(Frame):
         competitor = self._get_competitor_from_bib()
         if competitor is None:
             return
-        competitor.special_result(SpecialResult.disqualified)
+        competitor.special_result(SpecialResult.DISQUALIFIED)
         self._save_changes()
         messagebox.showinfo("Disqualified", f"{competitor.name}, {competitor.club}")
