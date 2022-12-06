@@ -37,7 +37,7 @@ class CompetitionRepositoryTest(unittest.TestCase):
         received_competition = self.repository.get_competition(competition_id)
         self.assertIsNotNone(received_competition)
         self.assertEqual(received_competition.name, "Helsinki marathon")
-        self.assertEqual(len(received_competition.competitors), 3)
+        self.assertEqual(len(received_competition.competitors), 4)
     
     def test_updating_competition_applies_changes(self):
         # add first version of the competition
@@ -51,7 +51,7 @@ class CompetitionRepositoryTest(unittest.TestCase):
 
         # check that the change has been saved
         received_competition = self.repository.get_competition(competition_id)
-        self.assertEqual(len(received_competition.competitors), 2)
+        self.assertEqual(len(received_competition.competitors), 3)
 
     def test_id_generation(self):
         # save an already existing competition

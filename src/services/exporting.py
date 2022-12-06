@@ -1,5 +1,6 @@
-from datetime import timedelta
+from datetime import datetime, timedelta
 from services.timedelta_format import format_timedelta
+from entities.competitor import SpecialResult
 
 class Exporting:
     def __init__(self, competition):
@@ -40,14 +41,24 @@ class Exporting:
             (competitor, self._competition.result_of_competitor(competitor))
             for competitor in self._competition.competitors
         ]
-        competitors.sort(key=lambda pair : timedelta.max if pair[1] is None else pair[1])
+        competitors.sort(key=self._competitor_result_sort_key)
         best_result = competitors[0][1]
 
         rows = []
         for i, (competitor, result) in enumerate(competitors):
-            result_format = "" if result is None else format_timedelta(result)
-            difference = ("" if i == 0 or result is None or best_result is None
-                          else "+" + format_timedelta(result-best_result))
+            if result is None:
+                result_format = ""
+            elif isinstance(result, SpecialResult):
+                result_format = result.value.upper()
+            else:
+                result_format = format_timedelta(result)
+
+            difference = (
+                ""
+                if i == 0 or result is None or isinstance(result, SpecialResult)
+                or best_result is None or isinstance(best_result, SpecialResult)
+                else "+" + format_timedelta(result-best_result)
+            )
 
             rows.append(f"""
             <tr>
@@ -61,3 +72,16 @@ class Exporting:
             """)
 
         return "\n".join(rows)
+
+    def _competitor_result_sort_key(self, competitor_result_tuple):
+        # sort order datetime, None, DNF, DNS, DQ
+        result = competitor_result_tuple[1]
+        if result is None:
+            return timedelta.max - timedelta(seconds=4)
+        elif result == SpecialResult.did_not_finish:
+            return timedelta.max - timedelta(seconds=3)
+        elif result == SpecialResult.did_not_start:
+            return timedelta.max - timedelta(seconds=2)
+        elif result == SpecialResult.disqualified:
+            return timedelta.max - timedelta(seconds=1)
+        return result

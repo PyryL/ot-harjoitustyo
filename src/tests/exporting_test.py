@@ -1,7 +1,7 @@
 import unittest
 from bs4 import BeautifulSoup
 from datetime import datetime
-from entities.competitor import Competitor
+from entities.competitor import Competitor, SpecialResult
 from entities.competition import Competition
 from services.exporting import Exporting
 
@@ -15,8 +15,9 @@ class ExportTestHelper:
     john = Competitor("John Doe", 57, "Compile & Run club", john_finish_time)
     unelma = Competitor("Unelma Sirpa Leena", 1241, "", unelma_finish_time)
     matti = Competitor("Matti Meikäläinen", 98, "Hello world runners", None)
+    urho = Competitor("Urho Urheilija", 123, "Urheat urheilijat", SpecialResult.did_not_finish)
 
-    return Competition("Helsinki marathon", [unelma, john, matti], start_time)
+    return Competition("Helsinki marathon", [unelma, john, matti, urho], start_time)
 
 class TestExportingResultsList(unittest.TestCase):
   def setUp(self):
@@ -30,7 +31,7 @@ class TestExportingResultsList(unittest.TestCase):
   
   def test_table_row_count(self):
     rows = self.exported_document.find_all("tr")
-    self.assertEqual(len(rows), 4)
+    self.assertEqual(len(rows), 5)
   
   def test_competitor_result(self):
     result = self.exported_document.select_one("tbody tr:nth-child(1) td:nth-child(5)").text
@@ -56,7 +57,7 @@ class TestExportingStartList(unittest.TestCase):
   
   def test_table_row_count(self):
     rows = self.exported_document.find_all("tr")
-    self.assertEqual(len(rows), 4)
+    self.assertEqual(len(rows), 5)
   
   def test_bibs_in_ascending_order(self):
     bibs = [

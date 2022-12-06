@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime, timedelta
 from entities.competition import Competition
-from entities.competitor import Competitor
+from entities.competitor import Competitor, SpecialResult
 
 class CompetitionTest(unittest.TestCase):
     def setUp(self):
@@ -32,6 +32,11 @@ class CompetitionTest(unittest.TestCase):
         competitor = Competitor("Matti Meikäläinen", 175, "Hello world runners", finish_time)
         result = self.competition.result_of_competitor(competitor)
         self.assertEqual(result, timedelta(0, 1315, 676878))
+
+    def test_competitior_special_result(self):
+        competitor = Competitor("Matti Meikäläinen", 175, "Hello world runners", SpecialResult.did_not_start)
+        result = self.competition.result_of_competitor(competitor)
+        self.assertEqual(result, SpecialResult.did_not_start)
     
     def test_competitor_result_with_none(self):
         result = self.competition.result_of_competitor(self.john_doe)

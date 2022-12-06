@@ -35,8 +35,10 @@ class Competition:
         self._competitors.remove(competitor)
 
     def result_of_competitor(self, competitor):
-        if competitor.finish_time is None or self._start_time is None:
+        if not competitor.has_finished or self._start_time is None:
             return None
+        if competitor.finish_time is None:
+            return competitor.finish
         return competitor.finish_time - self._start_time
 
     @property
