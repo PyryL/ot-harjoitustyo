@@ -16,8 +16,10 @@ class ExportTestHelper:
     unelma = Competitor("Unelma Sirpa Leena", 1241, "", unelma_finish_time)
     matti = Competitor("Matti Meikäläinen", 98, "Hello world runners", None)
     urho = Competitor("Urho Urheilija", 123, "Urheat urheilijat", SpecialResult.did_not_finish)
+    niko = Competitor("Niko Nopea", 74, "Noormarkun nopsa", SpecialResult.disqualified)
+    maija = Competitor("Maija Meikäläinen", 495, "Hello world runners", SpecialResult.did_not_start)
 
-    return Competition("Helsinki marathon", [unelma, john, matti, urho], start_time)
+    return Competition("Helsinki marathon", [unelma, john, matti, urho, niko, maija], start_time)
 
 class TestExportingResultsList(unittest.TestCase):
   def setUp(self):
@@ -31,7 +33,7 @@ class TestExportingResultsList(unittest.TestCase):
   
   def test_table_row_count(self):
     rows = self.exported_document.find_all("tr")
-    self.assertEqual(len(rows), 5)
+    self.assertEqual(len(rows), 7)
   
   def test_competitor_result(self):
     result = self.exported_document.select_one("tbody tr:nth-child(1) td:nth-child(5)").text
@@ -45,6 +47,19 @@ class TestExportingResultsList(unittest.TestCase):
     result = self.exported_document.select_one("tbody tr:nth-child(3) td:nth-child(5)").text
     self.assertEqual(result, "")
 
+  def test_special_result_sorting(self):
+    names = [
+      "John Doe",             # times from best to worst
+      "Unelma Sirpa Leena",
+      "Matti Meikäläinen",    # no marking yet, still running
+      "Urho Urheilija",       # did not finish
+      "Maija Meikäläinen",    # did not start
+      "Niko Nopea"           # disqualified
+    ]
+    for i in range(1, 7):
+      name = self.exported_document.select_one(f"tbody tr:nth-child({i}) td:nth-child(3)").text
+      self.assertEqual(name, names[i-1])
+
 class TestExportingStartList(unittest.TestCase):
   def setUp(self):
     competition = ExportTestHelper.generate_competition()
@@ -57,7 +72,7 @@ class TestExportingStartList(unittest.TestCase):
   
   def test_table_row_count(self):
     rows = self.exported_document.find_all("tr")
-    self.assertEqual(len(rows), 5)
+    self.assertEqual(len(rows), 7)
   
   def test_bibs_in_ascending_order(self):
     bibs = [
