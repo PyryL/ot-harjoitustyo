@@ -33,8 +33,6 @@ In competition view next to the title of the competition is the ID of the compet
 This is an important piece of information, as this is the way of accessing the competition next time.
 It is recommended to write the ID down after creating a new competition.
 
-![competition](assets/competition.png)
-
 ### Adding competitors
 User adds one or more competitors in Competitors tab.
 This is done by giving at least name and bib number information and the clicking the Add button.
