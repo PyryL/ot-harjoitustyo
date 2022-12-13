@@ -65,13 +65,12 @@ class CompetitionTest(unittest.TestCase):
         }
         competition = Competition.init_from_dict(competition_dict)
         self.assertEqual(str(competition), "Helsinki marathon, started 2022-11-10 17:05:11, 1 competitors")
-        
-    def test_invalid_initialization_from_dictionary(self):
-        invalid_competition_dict = {
-            "competitors": [],
-            "start": None
-        }
-        self.assertRaises(KeyError, lambda : Competition.init_from_dict(invalid_competition_dict))
+
+    def test_initialization_from_dictionary_with_missing_keys(self):
+        competition = Competition.init_from_dict({})
+        self.assertEqual(competition.name, "")
+        self.assertListEqual(competition.competitors, [])
+        self.assertIsNone(competition.start_time)
 
     def test_saving_to_dictionary(self):
         # make competition to have one competitor who has finished

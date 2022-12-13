@@ -1,8 +1,8 @@
 import hashlib
 
 class Login:
-    def __init__(self):
-        self._login_file_path = ".login"
+    def __init__(self, file_path = None):
+        self._login_file_path = file_path if file_path is not None else ".login"
 
     def get_token(self):
         try:
