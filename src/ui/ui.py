@@ -1,6 +1,7 @@
 from tkinter import Tk, Listbox, Variable, Scrollbar, Frame
 from tkinter.ttk import Label, Button
 from entities.competition import Competition
+from ui.login import LoginFrame
 from ui.menu import MenuFrame
 from ui.competition import CompetitionFrame
 
@@ -20,16 +21,22 @@ class UI(Tk):
         self._container.grid_columnconfigure(0, weight=1)
 
         self._pages = {
+            "login": LoginFrame(self._container, self._open_menu, width=400, height=200),
             "menu": MenuFrame(self._container, self._competition_repository, self._open_competition, width=400, height=200),
             "competition": CompetitionFrame(self._container, self._save_competition_changes, self._open_menu, width=400, height=200)
         }
 
-        self._open_menu()
+        self._open_login()
 
     def _open_page(self, name):
         for page in self._pages.values():
             page.grid_forget()
         self._pages[name].grid(row=0, column=0, sticky="nsew")
+
+    def _open_login(self):
+        self.title("TimeKeeper - Login")
+        self._open_page("login")
+        self._pages["login"].check_if_already_logged_in()
 
     def _open_menu(self):
         self.title("TimeKeeper - Menu")
