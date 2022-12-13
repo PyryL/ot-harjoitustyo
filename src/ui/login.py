@@ -19,7 +19,7 @@ class LoginFrame(Frame):
 
         password_label = Label(self, text="Password: ")
         self._password_var = StringVar()
-        password_entry = Entry(self, textvariable=self._password_var)
+        password_entry = Entry(self, textvariable=self._password_var, show="*")
 
         submit_button = Button(self, text="Let's go", command=self._submit_form)
 
