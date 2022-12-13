@@ -6,7 +6,7 @@ It is supposed to cover all needed actions of hosting such an event, from compet
 generating publish-ready result sheets.
 
 ## Users
-Two user rolas are needed: administrator and basic.
+Two user roles are needed: administrator and basic.
 Basic should have permission to add competitors, manage results and export data.
 Additionally, admin should be able to create and delete competitions, and manage basic users' accounts.
 
@@ -15,17 +15,18 @@ On the other hand multiple competitions should be able to be carried out simulta
 
 ## Functionality
 ### Accounts
-Before signin in, user is able to create an account by giving some basic information (choose username, password, etc).
+Before signin in, user is able to create an account by giving some basic information (choose username, password, etc). **DONE**
 
-If user wants to become admin, one must also give in a six-digit code from the server organizator.
-This way the server host can, for example, sell the right of use for the server.
+<s>If user wants to become admin, one must also give in a six-digit code from the server organizator.
+This way the server host can, for example, sell the right of use for the server.</s>
+_this became unnecessary during the development: implemented in other way_
 
 ### Selecting competition
-As stated before, one user can be associated with multiple competitions. Therefore, after logging in to the account, user can select the competition from a list.
+As stated before, one user can be associated with multiple competitions. Therefore, after logging in to the account, user can select the competition from a list. **DONE**
 
 User can also see their account ID, which can then be used by an admin user to grant a permission to manage a competition.
 
-Admin users can also create new competitions.
+Admin users can also create new competitions. **DONE**
 
 ### Managing competition
 After selecting a competition, user is able to perform the following actions with it:

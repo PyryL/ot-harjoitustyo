@@ -21,3 +21,10 @@
 
 * Graphical user interface
 * Competitor can be marked with "did not start", "did not finish" or "disqualified" instead of finish time (`SpecialResult` enum) & tests
+
+## Week 6
+
+* Communication with remote servers
+* User accounts
+* Numerous new tests were written and old were updated to raise the branch coverage to 100%
+* Docstrings were added

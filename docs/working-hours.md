@@ -13,4 +13,7 @@
 | 2022-11-25 | 2 | `CompetitionRepository`'s tests, architecture diagram |
 | 2022-12-06 | 2 | Graphical user interface |
 | | 1 | `SpecialResult` enum & tests |
-| **Total** | **15.5** | | 
+| 2022-12-13 | 2 | Coding the backend |
+| | 1 | Rewriting `CompetitionRepository` to communicate with servers |
+| | 0.5 | Adding login functionality to GUI |
+| **Total** | **19** | | 
