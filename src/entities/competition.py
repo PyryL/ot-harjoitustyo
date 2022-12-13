@@ -9,9 +9,15 @@ class Competition:
 
     @classmethod
     def init_from_dict(cls, obj):
-        competitors = [Competitor.init_from_dict(competitor) for competitor in obj["competitors"]]
-        start_time = None if obj["start"] is None else datetime.fromisoformat(obj["start"])
-        return Competition(obj["name"], competitors, start_time)
+        if "competitors" in obj.keys():
+            competitors = [Competitor.init_from_dict(competitor) for competitor in obj["competitors"]]
+        else:
+            competitors = []
+
+        start_time = None if "start" not in obj.keys() or obj["start"] is None else datetime.fromisoformat(obj["start"])
+        name = obj["name"] if "name" in obj.keys() else ""
+
+        return Competition(name, competitors, start_time)
 
     def save_into_dict(self):
         return {
