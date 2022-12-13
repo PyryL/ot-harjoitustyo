@@ -1,10 +1,7 @@
 import json
-import os
-import random
-from string import ascii_lowercase, digits
 from services.request import Request
-from entities.competition import Competition
 from services.login import Login
+from entities.competition import Competition
 
 class CompetitionRepository:
     def __init__(self, request = Request(), login = Login()):

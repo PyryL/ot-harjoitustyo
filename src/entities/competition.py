@@ -10,11 +10,15 @@ class Competition:
     @classmethod
     def init_from_dict(cls, obj):
         if "competitors" in obj.keys():
-            competitors = [Competitor.init_from_dict(competitor) for competitor in obj["competitors"]]
+            competitors = [
+                Competitor.init_from_dict(competitor)
+                for competitor in obj["competitors"]
+            ]
         else:
             competitors = []
 
-        start_time = None if "start" not in obj.keys() or obj["start"] is None else datetime.fromisoformat(obj["start"])
+        start_time = None if "start" not in obj.keys() or obj["start"] is None\
+                          else datetime.fromisoformat(obj["start"])
         name = obj["name"] if "name" in obj.keys() else ""
 
         return Competition(name, competitors, start_time)
