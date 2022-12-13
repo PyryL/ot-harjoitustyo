@@ -1,67 +1,79 @@
 import unittest
-import os
-import random
 from repositories.competition_repository import CompetitionRepository
 from tests.exporting_test import ExportTestHelper
+from entities.competition import Competition
+
+class RequestStub:
+    def __init__(self):
+        self.url = None
+        self.request_method = None
+        self.params = None
+        self.failure = False
+
+    def make_request(self, url, request_method, params):
+        self.url = url
+        self.request_method = request_method
+        self.params = params
+
+        if self.failure:
+            status_code = 404
+        else:
+            status_code = 201 if request_method == "POST" else 200
+
+        if request_method == "POST" and not self.failure:
+            response = '{"id": "1234"}'
+        elif request_method == "GET" and not self.failure:
+            response = '{}'
+        else:
+            response = ""
+        return (status_code, response)
+
+class LoginStub:
+    def get_token(self):
+        return "0123456789012345678901234567890123456789012345678901234567890123"
 
 class CompetitionRepositoryTest(unittest.TestCase):
     def setUp(self):
-        self.base_path = "test-competitions"
-        self._init_directory()
-        self.repository = CompetitionRepository(self.base_path)
-    
-    def tearDown(self):
-        # remove the test directory and its contents
-        self._init_directory()
+        self.request = RequestStub()
+        self.login = LoginStub()
+        self.repository = CompetitionRepository(self.request, self.login)
 
-    def _init_directory(self):
-        try:
-            # remove all the contents of the directory
-            for file in os.listdir(self.base_path):
-                os.remove(os.path.join(self.base_path, file))
+    def test_getting_competition(self):
+        competition = self.repository.get_competition("1234")
+        self.assertEqual(type(competition), Competition)
+        self.assertEqual(self.request.url, "https://pyry.info/timekeeper/competitions/index.php")
+        self.assertEqual(self.request.request_method, "GET")
+        expected_params = {
+            "id": "1234",
+            "token": "0123456789012345678901234567890123456789012345678901234567890123"
+        }
+        self.assertDictEqual(self.request.params, expected_params)
 
-            # remove the directory itself
-            os.rmdir(self.base_path)
-        except FileNotFoundError:
-            pass
-
-    def test_getting_nonexistant_competition(self):
-        competition = self.repository.get_competition("ab12cd34")
+    def test_getting_competition_with_failure(self):
+        self.request.failure = True
+        competition = self.repository.get_competition("1234")
         self.assertIsNone(competition)
 
-    def test_setting_competition_makes_it_available(self):
+    def test_setting_competition(self):
         competition = ExportTestHelper.generate_competition()
-        competition_id = "oi4uty63"
+        competition_id = "1234"
         self.repository.set_competition(competition_id, competition)
 
-        received_competition = self.repository.get_competition(competition_id)
-        self.assertIsNotNone(received_competition)
-        self.assertEqual(received_competition.name, "Helsinki marathon")
-        self.assertEqual(len(received_competition.competitors), 6)
-    
-    def test_updating_competition_applies_changes(self):
-        # add first version of the competition
-        competition = ExportTestHelper.generate_competition()
-        competition_id = "oi4uty63"
-        self.repository.set_competition(competition_id, competition)
-
-        # make a little change
-        competition.remove_competitor(competition.competitors[0])
-        self.repository.set_competition(competition_id, competition)
-
-        # check that the change has been saved
-        received_competition = self.repository.get_competition(competition_id)
-        self.assertEqual(len(received_competition.competitors), 5)
+        self.assertEqual(self.request.request_method, "PUT")
+        self.assertEqual(self.request.url, "https://pyry.info/timekeeper/competitions/index.php")
+        self.assertListEqual(list(self.request.params.keys()), ["id", "content", "token"])
 
     def test_id_generation(self):
-        # save an already existing competition
-        competition = ExportTestHelper.generate_competition()
-        self.repository.set_competition("xaji0y6d", competition)
-
-        # check that the generated ID matches criteria
-        random.seed(42)     # first round in while loop generates "xaji0y6d" and second something else
         competition_id = self.repository.generate_new_id()
-        self.assertRegex(competition_id, "^[a-z0-9]{8}$")
-        self.assertNotEqual(competition_id, "xaji0y6d")
-        file_exists = os.path.exists(os.path.join(self.base_path, f"{competition_id}.json"))
-        self.assertFalse(file_exists)
+        self.assertEqual(competition_id, "1234")
+        self.assertEqual(self.request.url, "https://pyry.info/timekeeper/competitions/index.php")
+        self.assertEqual(self.request.request_method, "POST")
+        expected_params = {
+            "token": "0123456789012345678901234567890123456789012345678901234567890123"
+        }
+        self.assertDictEqual(self.request.params, expected_params)
+
+    def test_id_generation_with_failure(self):
+        self.request.failure = True
+        competition_id = self.repository.generate_new_id()
+        self.assertIsNone(competition_id)
