@@ -28,3 +28,5 @@
 * User accounts
 * Numerous new tests were written and old were updated to raise the branch coverage to 100%
 * Docstrings were added
+* Improved [architecture](architecture.md) documentation
+* Created [user manual](manual.md)

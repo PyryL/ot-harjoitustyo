@@ -16,4 +16,6 @@
 | 2022-12-13 | 2 | Coding the backend |
 | | 1 | Rewriting `CompetitionRepository` to communicate with servers |
 | | 0.5 | Adding login functionality to GUI |
-| **Total** | **19** | | 
+| | 0.5 | Adding docstrings |
+| | 1 | Improving architecture docs and writing user manual |
+| **Total** | **20.5** | | 
