@@ -1,10 +1,22 @@
 import hashlib
 
 class Login:
+    """Class handling user login tokens."""
+
     def __init__(self, file_path = None):
+        """Constructor for a new token handling instance.
+
+        Args:
+            file_path (str, optional): Path for a file which stores the token. Defaults to None.
+        """
         self._login_file_path = file_path if file_path is not None else ".login"
 
     def get_token(self):
+        """Read the login token from a file, if available.
+
+        Returns:
+            str, optional: Returns the token when available, None otherwise
+        """
         try:
             with open(self._login_file_path, encoding="utf-8") as file:
                 token = file.read()
@@ -15,6 +27,15 @@ class Login:
         return None
 
     def log_in(self, username, password):
+        """Store a token for the user with given credentials.
+
+        Args:
+            username (str): The username of the user. Must not contain # character.
+            password (str): The password of the user
+
+        Returns:
+            bool: False if username contains invalid character, True otherwise
+        """
         if "#" in username:
             return False
         token = hashlib.sha256(f"{username}#{password}".encode("utf-8")).hexdigest()
@@ -23,5 +44,6 @@ class Login:
         return True
 
     def log_out(self):
+        """Forgets the saved login token."""
         with open(self._login_file_path, "w", encoding="utf-8") as file:
             file.write("")

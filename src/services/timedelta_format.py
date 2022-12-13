@@ -1,5 +1,14 @@
 
 def format_timedelta(delta):
+    """Prettify the given timedelta to a human-readable format.
+
+    Args:
+        delta (datetime.timedelta): The timedelta to format
+
+    Returns:
+        str: The formatted timedelta
+    """
+
     # split timedelta into hours, minutes and seconds
     seconds = delta.total_seconds()
     sign = "-" if seconds < 0 else ""
