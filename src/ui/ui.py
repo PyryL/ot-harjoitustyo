@@ -22,7 +22,7 @@ class UI(Tk):
 
         self._pages = {
             "login": LoginFrame(self._container, self._open_menu, width=400, height=200),
-            "menu": MenuFrame(self._container, self._competition_repository, self._open_competition, width=400, height=200),
+            "menu": MenuFrame(self._container, self._competition_repository, self._open_competition, self._open_login, width=400, height=200),
             "competition": CompetitionFrame(self._container, self._save_competition_changes, self._open_menu, width=400, height=200)
         }
 
