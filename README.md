@@ -14,7 +14,7 @@ Also make sure that you have [Poetry](https://python-poetry.org/) installed.
 
 You can install TimeKeeper by following these steps:
 
-1. Download the source code from [releases page](https://github.com/PyryL/ot-harjoitustyo/releases/tag/viikko5) and unzip the downloaded archive.
+1. Download the latest source code from [releases page](https://github.com/PyryL/ot-harjoitustyo/releases) and unzip the downloaded archive.
 2. Open Terminal, navigate to the unzipped directory and run `poetry install`.
 3. Start the application by running `poetry run invoke start`.
 
@@ -32,3 +32,4 @@ Branch coverage report can be generated with `poetry run invoke coverage-report`
 * [Architecture](docs/architecture.md)
 * [Changelog](docs/changelog.md)
 * [Records of working hours](docs/working-hours.md)
+* [User manual](docs/manual.md)
