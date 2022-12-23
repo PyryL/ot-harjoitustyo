@@ -1,5 +1,13 @@
 # User manual
 
+## Download and installation
+
+Make sure that your Python version is at least 3.8 and that you have [Poetry](https://python-poetry.org/) installed.
+
+Download the application from [releases](https://github.com/PyryL/ot-harjoitustyo/releases/latest) and unzip the downloaded archive.
+
+Install the application by running `poetry install` in the unzipped directory.
+
 ## Launching the application
 
 After installing the application, you can start it by running
