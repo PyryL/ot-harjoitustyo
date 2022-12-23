@@ -24,7 +24,7 @@ Unit tests can be run with `poetry run invoke test`
 
 Style tests can be run with `poetry run invoke lint`
 
-Branch coverage report can be generated with `poetry run invoke coverage-report`
+Branch coverage report can be generated with `poetry run invoke coverage-report` after which the report can be seen by opening `htmlcov/index.html`
 
 ## Docs
 
