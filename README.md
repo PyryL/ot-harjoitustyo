@@ -28,8 +28,9 @@ Branch coverage report can be generated with `poetry run invoke coverage-report`
 
 ## Docs
 
+* [User manual](docs/manual.md)
 * [Requirement specification](docs/requirements.md)
 * [Architecture](docs/architecture.md)
+* [Tests](docs/tests.md)
 * [Changelog](docs/changelog.md)
 * [Records of working hours](docs/working-hours.md)
-* [User manual](docs/manual.md)
