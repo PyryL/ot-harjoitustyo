@@ -18,4 +18,9 @@
 | | 0.5 | Adding login functionality to GUI |
 | | 0.5 | Adding docstrings |
 | | 1 | Improving architecture docs and writing user manual |
-| **Total** | **20.5** | | 
+| 2022-12-23 | 1 | User manual |
+| 2022-12-25 | 1 | Tests document |
+| | 0.5 | Architecture doc improvement |
+| | 0.5 | Updated requirement specification |
+| | | |
+| **Total** | **23.5** | | 
