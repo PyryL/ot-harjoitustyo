@@ -1,47 +1,43 @@
 # Requirement specification
 
 ## Purpose
-The application allows organisers of a running competition to prepare and execute successful timekeeping.
+The application allows organizers of a running competition to prepare and execute successful timekeeping.
 It is supposed to cover all needed actions of hosting such an event, from competitor enrollment all the way to 
 generating publish-ready result sheets.
 
 ## Users
-Two user roles are needed: administrator and basic.
-Basic should have permission to add competitors, manage results and export data.
-Additionally, admin should be able to create and delete competitions, and manage basic users' accounts.
 
-Multiple users, at least one of which is admin, should be able to edit the same competition at the same time.
-On the other hand multiple competitions should be able to be carried out simultaneously.
+There's only one user role in the app: the organizer. They is able to create competitions, manage competitors, add results and export data. Multiple competitions of a single user should be able to be carried out simultaneously. Only the user who created the competition can view and edit it.
 
 ## Functionality
+
 ### Accounts
+
 Before signin in, user is able to create an account by giving some basic information (choose username, password, etc). **DONE**
 
-<s>If user wants to become admin, one must also give in a six-digit code from the server organizator.
-This way the server host can, for example, sell the right of use for the server.</s>
-_this became unnecessary during the development: implemented in other way_
+If the user has already an account but they is not logged in (e.g. used application earlier and re-installed it), they is able to sign in using old credentials and has then access to all old competitions. **DONE**
 
 ### Selecting competition
-As stated before, one user can be associated with multiple competitions. Therefore, after logging in to the account, user can select the competition from a list. **DONE**
 
-User can also see their account ID, which can then be used by an admin user to grant a permission to manage a competition.
+As stated before, one user can be associated with multiple competitions. Therefore, after logging in to the account, user can open a competition by inserting its ID. **DONE**
 
-Admin users can also create new competitions. **DONE**
+User can also create new competitions. **DONE**
 
 ### Managing competition
+
 After selecting a competition, user is able to perform the following actions with it:
 
-* **Manage staff.** Admin users can add and remove users to the competition.
 * **Add a new competitor.** This is done by giving some information about the runner (e.g. bib number, name, club). **DONE**
-* **Start the timer.** When the competition begins, someone must start the clock. **DONE**
+* **Start the timer.** When the competition begins, user must start the clock. **DONE**
 * **Add finish time.** For each competitor, the time of crossing the finish line must be determined. **DONE**
 * **Special actions.** Instead of finish time, competitor can also be marked with *DNS* (did not start), *DNF* (did not finish) or *DQ* (disqualified). **DONE**
-* **Exporting results.** Results can be exported to an HTML file, that can then be published by the competition organizer. The publication process is out of this project's scope. **DONE**
+* **Exporting start lists.** Start list can be exported to an HTML file, that can then be published by the competition organizer (the publication process is out of this project's scope). **DONE**
+* **Exporting results.** The same way as start list, competition results can also be exported. **DONE**
 
 ## Further ideas
 
-* Exporting starting lists. **DONE**
 * Setting competitor's *PB* (personal best) and *SB* (season best) before competition. Add a PB/SB mark to the exported result sheet if the result was better than that.
 * Series based on competitor's age and gender.
 * Possibility for the organizer to save split times.
+* Multiple users could manage the same competition.
 * Account settings, including changing username and password, as well as removing the entire account.
