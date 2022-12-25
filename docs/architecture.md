@@ -35,6 +35,16 @@ Therefore the username must not contain this character,
 or else there could be collisions with different username-password pairs:
 for example pairs `user#name`-`password` and `user`-`name#password` would both lead to hash string of `user#name#password`.
 
+## Storing competition data
+
+All data is stored at the database, which is accessed via an API. [`CompetitionRepository`](../src/repositories/competition_repository.py) class is responsible for creating these requests and [`Request`](../src/services/request.py) class actually sends them.
+
+A new competition is first created by sending POST request with JSON body to the API endpoint. Request body should contain one key: `token` holding the user's login token. When process is successful, 201 status is responded with JSON body. The object has exactly one key, `id`, which holds the new competition ID.
+
+Updating competition data is done by sending PUT request with JSON body. The object should contain three keys: `id` holding the competition ID, `token` holding the user's login token, and `content` holding the dictionary representation of the competition. Expect status code 200 as a response.
+
+Competition data can be read by sending GET request with JSON body containing two keys: `id` holding the competition ID and `token` holding the user's login token. Expect receiving response status 200 with JSON body holding the dictionary respresentation of the competition.
+
 ## Competition sequence diagram
 
 The following sequence diagram depicts the flow of managing a competition.
