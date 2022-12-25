@@ -45,7 +45,7 @@ Updating competition data is done by sending PUT request with JSON body. The obj
 
 Competition data can be read by sending GET request with JSON body containing two keys: `id` holding the competition ID and `token` holding the user's login token. Expect receiving response status 200 with JSON body holding the dictionary respresentation of the competition.
 
-## Competition sequence diagram
+## Sequence diagrams
 
 The following sequence diagram depicts the flow of managing a competition.
 
@@ -63,4 +63,21 @@ sequenceDiagram
   UI->>Exporting: export results
   Exporting-->>UI: HTML string
   note over UI: user saves the HTML document
+```
+
+Competition data management is as follows.
+
+```mermaid
+sequenceDiagram
+Note over App,API: Create a new competition
+App->>API: POST {"token":"myusertoken"}
+API->>App: Status 201 {"id":"competitionid"}
+Note over App,API: Add/update competition data
+loop After every change
+  App->>API: PUT {"token":"myusertoken","id":"competitionid","content":{"name":"My competition", ... }}
+  API->>App: Status 200
+end
+Note over App: Closes app and opens later
+App->>API: GET {"id":"competitionid","token":"myusertoken"}
+API->>App: 200 {"name":"My competition", ... }
 ```
