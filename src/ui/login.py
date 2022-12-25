@@ -38,8 +38,16 @@ class LoginFrame(Frame):
     def _submit_form(self, *args):
         username = self._username_var.get()
         password = self._password_var.get()
+        if len(username) == 0:
+            messagebox.showerror("Invalid credentials", "Username must not be empty")
+            return
+        if len(password) == 0:
+            messagebox.showerror("Invalid credentials", "Password must not be empty")
+            return
+        if "#" in username:
+            messagebox.showerror("Invalid credentials", "Username must not contain # character")
+            return
         success = self._login.log_in(username, password)
         if not success:
-            messagebox.showerror("Username must not contain # character")
             return
         self._open_menu()

@@ -41,6 +41,14 @@ class TestLogin(unittest.TestCase):
         success = self.login.log_in("user#name", "password")
         self.assertFalse(success)
 
+    def test_login_with_empty_username(self):
+        success = self.login.log_in("", "password")
+        self.assertFalse(success)
+
+    def test_login_with_empty_password(self):
+        success = self.login.log_in("username", "")
+        self.assertFalse(success)
+
     def test_logout(self):
         self._write_token()
         self.login.log_out()

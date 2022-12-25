@@ -30,13 +30,13 @@ class Login:
         """Store a token for the user with given credentials.
 
         Args:
-            username (str): The username of the user. Must not contain # character.
-            password (str): The password of the user
+            username (str): The username of the user. Must not contain # character or be empty.
+            password (str): The password of the user. Must not be empty.
 
         Returns:
-            bool: False if username contains invalid character, True otherwise
+            bool: False if given credentials don't meet requirements, True otherwise
         """
-        if "#" in username:
+        if "#" in username or len(username) == 0 or len(password) == 0:
             return False
         token = hashlib.sha256(f"{username}#{password}".encode("utf-8")).hexdigest()
         with open(self._login_file_path, "w", encoding="utf-8") as file:
